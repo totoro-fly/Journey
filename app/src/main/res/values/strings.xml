@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Journey</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="beijing">北京</string>
+    <string name="tianjin">天津</string>
+    <string name="shanghai">上海</string>
+    <string name="chongqing">重庆</string>
+</resources>
