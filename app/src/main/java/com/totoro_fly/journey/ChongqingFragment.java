@@ -1,12 +1,14 @@
 package com.totoro_fly.journey;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -74,11 +76,20 @@ public class ChongqingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.scenery_listview, container, false);
         ButterKnife.bind(this, view);
-        ArrayList<Scenery> chongqingScenery = new ArrayList<Scenery>();
+        final ArrayList<Scenery> chongqingScenery = new ArrayList<Scenery>();
         chongqingScenery.add(new Scenery(R.drawable.sanxia, "三峡", "三峡位于中国重庆市和湖北省境内的长江干流上，西起重庆市奉节县的白帝城，东至湖北省宜昌市的南津关，全长193公里，由瞿塘峡、巫峡、西陵峡组成。长江三峡位于中国的腹地, 属亚热带季风气候区，跨重庆奉节、重庆巫山、湖北巴东、湖北秭归、湖北宜昌，也就是常说的“大三峡”。"));
         chongqingScenery.add(new Scenery(R.drawable.diaoyucheng, "钓鱼城","钓鱼城遗址位于重庆市合川区城区东面5公里的嘉陵江南岸钓鱼山上，因南宋与蒙古大军发生钓鱼城之战而闻名天下，蒙哥便在这里战死。这里是南宋四川置制司抗蒙山城之一。"));
         SceneryAdapter sceneryAdapter = new SceneryAdapter(getContext(), chongqingScenery);
         sceneryListview.setAdapter(sceneryAdapter);
+        sceneryListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Scenery scenery = chongqingScenery.get(i);
+                Intent intent = new Intent(getActivity(), SceneryActivity.class);
+                intent.putExtra("scenery", scenery);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
