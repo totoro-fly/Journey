@@ -9,13 +9,23 @@ import android.os.Parcelable;
 
 public class Scenery implements Parcelable {
     private int mImage;
+    private int mMusic;
     private String mTitel;
     private String mContent;
 
-    public Scenery(int mImage, String mTitel, String mContent) {
+    public Scenery(int mMusic, int mImage, String mTitel, String mContent) {
+        this.mMusic = mMusic;
         this.mImage = mImage;
         this.mTitel = mTitel;
         this.mContent = mContent;
+    }
+
+    public int getmMusic() {
+        return mMusic;
+    }
+
+    public void setmMusic(int mMusic) {
+        this.mMusic = mMusic;
     }
 
     public int getmImage() {
@@ -50,17 +60,19 @@ public class Scenery implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.mImage);
+        dest.writeInt(this.mMusic);
         dest.writeString(this.mTitel);
         dest.writeString(this.mContent);
     }
 
     protected Scenery(Parcel in) {
         this.mImage = in.readInt();
+        this.mMusic = in.readInt();
         this.mTitel = in.readString();
         this.mContent = in.readString();
     }
 
-    public static final Parcelable.Creator<Scenery> CREATOR = new Parcelable.Creator<Scenery>() {
+    public static final Creator<Scenery> CREATOR = new Creator<Scenery>() {
         @Override
         public Scenery createFromParcel(Parcel source) {
             return new Scenery(source);
