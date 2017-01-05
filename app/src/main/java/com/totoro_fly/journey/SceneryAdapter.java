@@ -35,5 +35,6 @@ public class SceneryAdapter extends ArrayAdapter {
         TextView content = (TextView) itemView.findViewById(R.id.item_content);
         content.setText(scenery.getmContent());
         return itemView;
+        
     }
 }
