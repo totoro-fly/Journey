@@ -19,15 +19,9 @@ public class CityFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return mContext.getString(R.string.beijing);
-            case 1:
-                return mContext.getString(R.string.tianjin);
-            case 2:
-                return mContext.getString(R.string.shanghai);
-            case 3:
-                return mContext.getString(R.string.chongqing);
+        int[] title = {R.string.beijing, R.string.tianjin, R.string.shanghai, R.string.chongqing};
+        if (position < title.length) {
+            return mContext.getString(title[position]);
         }
         return super.getPageTitle(position);
     }
